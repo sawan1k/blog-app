@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Alert, Spinner } from "flowbite-react";
+import Auth from "../components/Auth";
 export default function SignUp() {
   const [formData, setFormData] = useState({});
   const [errorMessage, setErrorMessage] = useState(null);
@@ -132,6 +133,7 @@ export default function SignUp() {
               )}
             </button>
           </div>
+          <Auth />
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500 ">

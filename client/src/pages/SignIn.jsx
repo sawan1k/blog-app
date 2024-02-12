@@ -7,6 +7,7 @@ import {
   signInSuccess,
   signInFailure,
 } from "../redux/user/userSlice";
+import Auth from "../components/Auth";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -121,6 +122,7 @@ export default function SignIn() {
               )}
             </button>
           </div>
+          <Auth />
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500 ">
