@@ -20,8 +20,9 @@ import {
   deleteUserSuccess,
   signoutSuccess,
 } from "../redux/user/userSlice";
+import { Link } from "react-router-dom";
 export default function DashProfile() {
-  const { currentUser, error } = useSelector((state) => state.user);
+  const { currentUser, error, loading } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
@@ -40,7 +41,6 @@ export default function DashProfile() {
       setImageFileUrl(URL.createObjectURL(file));
     }
   };
-  // console.log(imageFile, imageFileUrl);
   useEffect(() => {
     if (imageFile) {
       uploadImage();
@@ -61,7 +61,7 @@ export default function DashProfile() {
 
         setImageFileUploadProgress(progress.toFixed(0));
       },
-      (error) => {
+      () => {
         setImageFileUploadError(
           "Could not upload image (File must be less than 2MB)"
         );
@@ -253,10 +253,21 @@ export default function DashProfile() {
         <div className="mt-4">
           <button
             type="submit"
+            disabled={loading || imageFileUploading}
             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Update
+            {loading ? "Loading..." : "Update"}
           </button>
+          {currentUser.isAdmin && (
+            <Link to="/create-post">
+              <button
+                type="submit"
+                className="flex mt-4 w-full justify-center rounded-md bg-cyan-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Create a post
+              </button>
+            </Link>
+          )}
         </div>
       </form>
       <div className="text-red-500 flex justify-between mt-5">
