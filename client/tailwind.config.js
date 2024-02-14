@@ -1,4 +1,7 @@
-/** @type {import('tailwindcss').Config} */
+import flowbitePlugin from "flowbite/plugin";
+import tailwindForms from "@tailwindcss/forms";
+import tailwindScrollbar from "tailwind-scrollbar";
+
 export default {
   content: [
     "./index.html",
@@ -8,5 +11,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [require("flowbite/plugin"), require("@tailwindcss/forms")],
+  plugins: [flowbitePlugin, tailwindForms, tailwindScrollbar],
 };
