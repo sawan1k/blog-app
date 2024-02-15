@@ -83,6 +83,7 @@ export default function UpdatePost() {
       console.log(error);
     }
   };
+  // console.log(formData._id);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -135,20 +136,20 @@ export default function UpdatePost() {
             <option value="uncategorized">Select a category</option>
             <option value="javascript">JavaScript</option>
             <option value="reactjs">React.js</option>
-            <option value="tailwindcss">TailwindCss</option>
-            <option value="ml">Machine learning</option>
             <option value="nextjs">Next.js</option>
           </Select>
         </div>
-        <div className="flex gap-4 items-center justify-between border-2 rounded-lg border-teal-500 border-dotted p-3">
+        <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
           <FileInput
             type="file"
             accept="image/*"
             onChange={(e) => setFile(e.target.files[0])}
           />
-          <button
+          <Button
             type="button"
-            className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            gradientDuoTone="purpleToBlue"
+            size="sm"
+            outline
             onClick={handleUpdloadImage}
             disabled={imageUploadProgress}
           >
@@ -162,7 +163,7 @@ export default function UpdatePost() {
             ) : (
               "Upload Image"
             )}
-          </button>
+          </Button>
         </div>
         {imageUploadError && <Alert color="failure">{imageUploadError}</Alert>}
         {formData.image && (
@@ -182,10 +183,7 @@ export default function UpdatePost() {
             setFormData({ ...formData, content: value });
           }}
         />
-        <Button
-          type="submit"
-          className="flex w-full justify-center rounded-lg bg-cyan-500 px-2 py-1 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
+        <Button type="submit" gradientDuoTone="purpleToPink">
           Update post
         </Button>
         {publishError && (
