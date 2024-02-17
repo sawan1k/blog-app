@@ -108,6 +108,7 @@ export default function CreatePost() {
             <option value="tailwindcss">TailwindCss</option>
             <option value="ml">Machine learning</option>
             <option value="nextjs">Next.js</option>
+            <option value="javascript">JavaScript</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-2 rounded-lg border-teal-500 border-dotted p-3">
