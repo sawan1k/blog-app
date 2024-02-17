@@ -3,6 +3,7 @@ import { Footer } from "flowbite-react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import logodark from "../assets/logo-dark.png";
+import { useSelector } from "react-redux";
 import {
   BsFacebook,
   BsInstagram,
@@ -10,10 +11,13 @@ import {
   BsGithub,
   BsDribbble,
 } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function FooterCom() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-
+  const { theme } = useSelector((state) => state.theme);
+  useEffect(() => {
+    setIsDarkMode(theme === "dark");
+  }, [theme]);
   return (
     <Footer container className="border border-t-5 border-emerald-500">
       <div className="w-full max-w-7xl mx-auto">

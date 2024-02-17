@@ -8,7 +8,6 @@ import { signoutSuccess } from "../redux/user/userSlice";
 import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import logodark from "../assets/logo-dark.png";
-// import { signoutSuccess } from "../redux/user/userSlice.js";
 
 export default function Header() {
   const path = useLocation().pathname;
