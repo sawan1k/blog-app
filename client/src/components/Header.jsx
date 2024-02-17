@@ -52,7 +52,7 @@ export default function Header() {
       </Button>
       <div className="flex gap-2 md:order-2">
         <Button
-          className="w-12 h-8 hidden sm:inline"
+          className="w-12 h-8 lg:inline md:inline sm:hidden"
           color="gray"
           pill
           onClick={() => dispatch(toggleTheme())}
