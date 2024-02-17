@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
+import logo from "../assets/logo.png";
+import logodark from "../assets/logo-dark.png";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
-
+  const { theme } = useSelector((state) => state.theme);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  useEffect(() => {
+    setIsDarkMode(theme === "dark");
+  }, [theme]);
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await fetch("/api/post/getPosts");
@@ -16,14 +23,21 @@ export default function Home() {
   return (
     <div>
       <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto ">
-        <h1 className="text-3xl font-bold lg:text-6xl">Welcome to my Blog</h1>
-        <p className="text-gray-500 text-xs sm:text-sm">
-          Here you will find a variety of articles and tutorials on topics such as
-          web development, software engineering, and programming languages.
+        <div className="flex top-0 justify-center items-center">
+          <img
+            src={isDarkMode ? logodark : logo}
+            alt="logo"
+            className=" rounded-xl"
+          />
+        </div>
+
+        <p className="text-gray-500 text-xs sm:text-sm text-center">
+          Here you will find a variety of articles and tutorials on topics such
+          as web development, software engineering, and programming languages.
         </p>
         <Link
           to="/search"
-          className="text-xs sm:text-sm text-teal-500 font-bold hover:underline"
+          className="text-xs sm:text-sm text-teal-500 font-bold hover:underline text-center"
         >
           View all posts
         </Link>

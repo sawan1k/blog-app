@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../redux/theme/themeSlice";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useEffect, useState } from "react";
+import logo from "../assets/logo.png";
+import logodark from "../assets/logo-dark.png";
 // import { signoutSuccess } from "../redux/user/userSlice.js";
 
 export default function Header() {
@@ -16,7 +18,10 @@ export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
   const { theme } = useSelector((state) => state.theme);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  useEffect(() => {
+    setIsDarkMode(theme === "dark");
+  }, [theme]);
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get("searchTerm");
@@ -49,9 +54,11 @@ export default function Header() {
   return (
     <Navbar className="border-b-2 border-b-fuchsia-300 ">
       <Link to="/" className="font-bold flex dark:text-white">
-        <span className="px-2 py-1 rounded-3xl text-white  bg-cyan-500 hover:bg-cyan-600 ">
-          Sawan Blog
-        </span>
+        <img
+          src={isDarkMode ? logodark : logo}
+          alt="logo"
+          className="w-16 rounded-xl "
+        />
       </Link>
       <form onSubmit={handleSubmit}>
         <TextInput
@@ -61,7 +68,6 @@ export default function Header() {
           className="hidden lg:inline"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          
         />
       </form>
       <Button className="w-12 h-8 lg:hidden" color="gray" pill>

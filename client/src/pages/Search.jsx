@@ -1,4 +1,4 @@
-import {  Select, TextInput } from "flowbite-react";
+import { Select, TextInput } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import PostCard from "../components/PostCard";
@@ -10,7 +10,6 @@ export default function Search() {
     category: "uncategorized",
   });
 
-  console.log(sidebarData);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -103,7 +102,7 @@ export default function Search() {
   return (
     <div className="flex flex-col md:flex-row">
       <div className="p-7 border-b md:border-r md:min-h-screen border-gray-500">
-        <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <div className="flex   items-center gap-2">
             <label className="whitespace-nowrap font-semibold">
               Search Term:
@@ -148,7 +147,7 @@ export default function Search() {
         <h1 className="text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 ">
           Posts results:
         </h1>
-        <div className="p-7 flex flex-wrap gap-4">
+        <div className="grid m-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-2 mt-3">
           {!loading && posts.length === 0 && (
             <p className="text-xl text-gray-500">No posts found.</p>
           )}

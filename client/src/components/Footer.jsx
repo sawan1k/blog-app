@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
 import { Footer } from "flowbite-react";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
+import logodark from "../assets/logo-dark.png";
 import {
   BsFacebook,
   BsInstagram,
@@ -7,7 +10,10 @@ import {
   BsGithub,
   BsDribbble,
 } from "react-icons/bs";
+import { useState } from "react";
 export default function FooterCom() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   return (
     <Footer container className="border border-t-5 border-emerald-500">
       <div className="w-full max-w-7xl mx-auto">
@@ -17,9 +23,11 @@ export default function FooterCom() {
               to="/"
               className="self-center whitespace-nowrap text-lg sm:text-xl font-semibold dark:text-white"
             >
-              <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
-                Sawan Blog
-              </span>
+              <img
+                src={isDarkMode ? logodark : logo}
+                alt="logo"
+                className="w-16 rounded-xl"
+              />
             </Link>
           </div>
           <div className="grid grid-cols-3 gap-8 mt-4 sm:grid-cols-3 sm:gap-6">
